@@ -23,10 +23,15 @@ ecs = digitalio.DigitalInOut(board.CE0)
 dc = digitalio.DigitalInOut(board.D22)
 rst = digitalio.DigitalInOut(board.D27)
 busy = digitalio.DigitalInOut(board.D17)
+up_button = digitalio.DigitalInOut(board.D5)
+up_button.switch_to_input()
+down_button = digitalio.DigitalInOut(board.D6)
+down_button.switch_to_input()
 
 # You'll need to get a token from openweathermap.org, looks like:
 # 'b6907d289e10d714a6e88b30761fae22'
 OPEN_WEATHER_TOKEN = "d17d032f55bfa5607ba70c65afd9a22d"
+DEBOUNCE_DELAY = 0.3
 
 # Use cityname, country code where countrycode is ISO3166 format.
 # E.g. "New York, US" or "London, GB"
@@ -57,6 +62,17 @@ weather_refresh = None
 
 while True:
     # only query the weather every 10 minutes (and on first run)
+    # Check for Button Presses
+    if up_button.value != down_button.value:
+        if not up_button.value:
+            LOCATION = "Clovis, US"
+            weather_refresh = None
+            time.sleep(DEBOUNCE_DELAY)
+        elif not down_button.value:
+            LOCATION = "Albuquerque, US"
+            weather_refresh = None
+            time.sleep(DEBOUNCE_DELAY)
+
     if (not weather_refresh) or (time.monotonic() - weather_refresh) > 600:
         response = urllib.request.urlopen(data_source)
         if response.getcode() == 200:
