@@ -67,13 +67,18 @@ while True:
     print("down_button status: ", down_button.value)
     if up_button.value != down_button.value:
         if not up_button.value:
+            print("LOCATION is Clovis, US")
             LOCATION = "Clovis, US"
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
         elif not down_button.value:
+            print("LOCATION is Albuquerque, US")
             LOCATION = "Albuquerque, US"
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
+        # Set up where we'll be fetching data from
+        params = {"q": LOCATION, "appid": OPEN_WEATHER_TOKEN}
+        data_source = DATA_SOURCE_URL + "?" + urllib.parse.urlencode(params)
 
     if (not weather_refresh) or (time.monotonic() - weather_refresh) > 600:
         response = urllib.request.urlopen(data_source)
@@ -86,4 +91,4 @@ while True:
             print("Unable to retrieve data at {}".format(url))
 
     gfx.update_time()
-    time.sleep(3)  # wait 5 minutes before updating anything again
+    time.sleep(5)  # wait 5 seconds before updating anything again
