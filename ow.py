@@ -59,7 +59,7 @@ display.rotation = 1
 
 gfx = Weather_Graphics(display, am_pm=True, celsius=False)
 weather_refresh = None
-display_weather = False
+display_weather = 0
 
 while True:
     # only query the weather every 10 minutes (and on first run)
@@ -70,12 +70,12 @@ while True:
         if not up_button.value:
             print("LOCATION is Clovis, US")
             LOCATION = "Clovis, US"
-            display_weather = True
+            display_weather = 700
             time.sleep(DEBOUNCE_DELAY)
         elif not down_button.value:
             print("LOCATION is Albuquerque, US")
             LOCATION = "Albuquerque, US"
-            display_weather = True
+            display_weather = 700
             time.sleep(DEBOUNCE_DELAY)
         # Set up where we'll be fetching data from
         params = {"q": LOCATION, "appid": OPEN_WEATHER_TOKEN}
@@ -86,9 +86,10 @@ while True:
         if response.getcode() == 200:
             value = response.read()
             print("Response is", value)
-            gfx.update_time()
+            #gfx.update_time()
             gfx.display_weather(value)
             weather_refresh = time.monotonic()
+            display_weather = 0
         else:
             print("Unable to retrieve data at {}".format(url))
 
