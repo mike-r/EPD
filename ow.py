@@ -63,6 +63,8 @@ weather_refresh = None
 while True:
     # only query the weather every 10 minutes (and on first run)
     # Check for Button Presses
+    print("up_button status: ", up_button)
+    print("down_button status: ", down_button)
     if up_button.value != down_button.value:
         if not up_button.value:
             LOCATION = "Clovis, US"
@@ -84,4 +86,4 @@ while True:
             print("Unable to retrieve data at {}".format(url))
 
     gfx.update_time()
-    time.sleep(300)  # wait 5 minutes before updating anything again
+    time.sleep(3)  # wait 5 minutes before updating anything again
