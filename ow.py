@@ -77,7 +77,7 @@ while True:
             # Set up where we'll be fetching data from
             params = {"lat": LAT, "lon": LON, "appid": OPEN_WEATHER_TOKEN}
             print("lat is ", LAT, ", LON is ", LON)
-            print("Location is Reedley Airport")
+            print("Location is Madison WI Capital")
             print("params: ", params)
         elif not down_button.value:
             LOCATION = "Albuquerque, US"
