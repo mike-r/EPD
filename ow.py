@@ -72,19 +72,21 @@ while True:
     #print("down_button status: ", down_button.value)
     if up_button.value != down_button.value:
         if not up_button.value:
-            params = {"lat": LAT, "&lon": LON, "appid": OPEN_WEATHER_TOKEN}
-            print("lat is ", LAT, ", LON is ", LON)
-            print("Location is Reedley Airport")
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
+            # Set up where we'll be fetching data from
+            params = {"lat": LAT, "lon": LON, "appid": OPEN_WEATHER_TOKEN}
+            print("lat is ", LAT, ", LON is ", LON)
+            print("Location is Reedley Airport")
+            print("params: ", params)
         elif not down_button.value:
             LOCATION = "Albuquerque, US"
             print("LOCATION is ", LOCATION, ", US")
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
-        # Set up where we'll be fetching data from
-        params = {"q": LOCATION, "appid": OPEN_WEATHER_TOKEN}
-        print("params: ", params)
+            # Set up where we'll be fetching data from
+            params = {"q": LOCATION, "appid": OPEN_WEATHER_TOKEN}
+            print("params: ", params)
         data_source = DATA_SOURCE_URL + "?" + urllib.parse.urlencode(params)
         print("data_source: ", data_source)
 
