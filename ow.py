@@ -63,8 +63,8 @@ weather_refresh = None
 while True:
     # only query the weather every 10 minutes (and on first run)
     # Check for Button Presses
-    print("up_button status: ", up_button.value)
-    print("down_button status: ", down_button.value)
+    #print("up_button status: ", up_button.value)
+    #print("down_button status: ", down_button.value)
     if up_button.value != down_button.value:
         if not up_button.value:
             print("LOCATION is Clovis, US")
