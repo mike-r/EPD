@@ -32,6 +32,10 @@ down_button.switch_to_input()
 # 'b6907d289e10d714a6e88b30761fae22'
 OPEN_WEATHER_TOKEN = "d17d032f55bfa5607ba70c65afd9a22d"
 DEBOUNCE_DELAY = 0.3
+up_button_no = 1
+down_button_no = 1
+
+
 
 # Use cityname, country code where countrycode is ISO3166 format.
 # E.g. "New York, US" or "London, GB"
@@ -72,14 +76,23 @@ while True:
     #print("down_button status: ", down_button.value)
     if up_button.value != down_button.value:
         if not up_button.value:
+            city_no += 1
+        elif not down_button.value:
+            city_no -=1
+        if city_no > 4: city_no = 1
+        if city_no <1: city_no = 4
+
+        if city_no == 1:
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
             # Set up where we'll be fetching data from
+            LAT = 43.07942
+            LON = -89.37584
             params = {"lat": LAT, "lon": LON, "appid": OPEN_WEATHER_TOKEN}
             print("lat is ", LAT, ", LON is ", LON)
             print("Location is Madison WI Capital")
             print("params: ", params)
-        elif not down_button.value:
+        elif city_no == 2:
             LOCATION = "Albuquerque, US"
             print("LOCATION is ", LOCATION, ", US")
             weather_refresh = None
@@ -87,6 +100,25 @@ while True:
             # Set up where we'll be fetching data from
             params = {"q": LOCATION, "appid": OPEN_WEATHER_TOKEN}
             print("params: ", params)
+        elif city_no == 3:
+            LOCATION = "Clovis, US"
+            print("LOCATION is ", LOCATION, ", US")
+            weather_refresh = None
+            time.sleep(DEBOUNCE_DELAY)
+            # Set up where we'll be fetching data from
+            params = {"q": LOCATION, "appid": OPEN_WEATHER_TOKEN}
+            print("params: ", params)
+        elif city_no == 4:
+            weather_refresh = None
+            time.sleep(DEBOUNCE_DELAY)
+            # Set up where we'll be fetching data from
+            LAT = 36.66880137330124
+            LON = -119.44902966047906
+            params = {"lat": LAT, "lon": LON, "appid": OPEN_WEATHER_TOKEN}
+            print("lat is ", LAT, ", LON is ", LON)
+            print("Location is Reedley Airport")
+            print("params: ", params)
+
         data_source = DATA_SOURCE_URL + "?" + urllib.parse.urlencode(params)
         print("data_source: ", data_source)
 
