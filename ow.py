@@ -36,6 +36,10 @@ DEBOUNCE_DELAY = 0.3
 # Use cityname, country code where countrycode is ISO3166 format.
 # E.g. "New York, US" or "London, GB"
 LOCATION = "Albuquerque, US"
+
+lat = 43.07942
+lon = -89.37584
+
 DATA_SOURCE_URL = "http://api.openweathermap.org/data/2.5/weather"
 
 if len(OPEN_WEATHER_TOKEN) == 0:
@@ -46,11 +50,12 @@ if len(OPEN_WEATHER_TOKEN) == 0:
 # Set up where we'll be fetching data from
 params = {"q": LOCATION, "appid": OPEN_WEATHER_TOKEN}
 data_source = DATA_SOURCE_URL + "?" + urllib.parse.urlencode(params)
+print("data_source: ", data_source)
 
 # Initialize the Display
 display = Adafruit_SSD1680Z(     # New Bonnet ssd1680z [GDEY0213B74]
 #display = Adafruit_SSD1680(     # Old eInk Bonnet ssd1680
-#display = Adafruit_SSD1675(   # Older eInk Bonnet ssd1675
+#display = Adafruit_SSD1675(     # Older eInk Bonnet ssd1675
     122, 250, spi, cs_pin=ecs, dc_pin=dc, sramcs_pin=None, rst_pin=rst, busy_pin=busy,
 #    120, 250, spi, cs_pin=ecs, dc_pin=dc, sramcs_pin=None, rst_pin=rst, busy_pin=busy,
 )
@@ -78,7 +83,9 @@ while True:
             time.sleep(DEBOUNCE_DELAY)
         # Set up where we'll be fetching data from
         params = {"q": LOCATION, "appid": OPEN_WEATHER_TOKEN}
+        print("params: ", params)
         data_source = DATA_SOURCE_URL + "?" + urllib.parse.urlencode(params)
+        print("data_source: ", data_source)
 
     if (not weather_refresh) or (time.monotonic() - weather_refresh) > 600:
         response = urllib.request.urlopen(data_source)
