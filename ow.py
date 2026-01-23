@@ -67,13 +67,13 @@ while True:
     #print("down_button status: ", down_button.value)
     if up_button.value != down_button.value:
         if not up_button.value:
-            print("LOCATION is Clovis, US")
             LOCATION = "Madison, US"
+            print("LOCATION is ", LOCATION, ", US")
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
         elif not down_button.value:
-            print("LOCATION is Albuquerque, US")
             LOCATION = "Albuquerque, US"
+            print("LOCATION is ", LOCATION, ", US")
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
         # Set up where we'll be fetching data from
