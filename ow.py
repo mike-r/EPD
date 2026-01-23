@@ -78,8 +78,8 @@ while True:
             city_no += 1
         elif not down_button.value:
             city_no -=1
-        if city_no > 4: city_no = 1
-        if city_no <1: city_no = 4
+        if city_no > 5: city_no = 1
+        if city_no <1: city_no = 5
 
         if city_no == 1:
             weather_refresh = None
@@ -116,6 +116,14 @@ while True:
             params = {"lat": LAT, "lon": LON, "appid": OPEN_WEATHER_TOKEN}
             print("lat is ", LAT, ", LON is ", LON)
             print("Location is Reedley Airport")
+            print("params: ", params)
+        elif city_no == 5:
+            LOCATION = "Wahtoke, US"
+            print("LOCATION is ", LOCATION, ", US")
+            weather_refresh = None
+            time.sleep(DEBOUNCE_DELAY)
+            # Set up where we'll be fetching data from
+            params = {"q": LOCATION, "appid": OPEN_WEATHER_TOKEN}
             print("params: ", params)
 
         data_source = DATA_SOURCE_URL + "?" + urllib.parse.urlencode(params)
