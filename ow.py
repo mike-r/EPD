@@ -32,7 +32,7 @@ down_button.switch_to_input()
 # 'b6907d289e10d714a6e88b30761fae22'
 OPEN_WEATHER_TOKEN = "d17d032f55bfa5607ba70c65afd9a22d"
 DEBOUNCE_DELAY = 0.3
-city_no = 1
+city_no = 2         # Albuquerque, US
 
 
 
@@ -77,9 +77,9 @@ while True:
         if not up_button.value:
             city_no += 1
         elif not down_button.value:
-            city_no -=1
+            city_no -= 1
         if city_no > 5: city_no = 1
-        if city_no <1: city_no = 5
+        if city_no < 1: city_no = 5
 
         if city_no == 1:
             weather_refresh = None
@@ -93,7 +93,7 @@ while True:
             print("params: ", params)
         elif city_no == 2:
             LOCATION = "Albuquerque, US"
-            print("LOCATION is ", LOCATION, ", US")
+            print("LOCATION is ", LOCATION)
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
             # Set up where we'll be fetching data from
@@ -101,7 +101,7 @@ while True:
             print("params: ", params)
         elif city_no == 3:
             LOCATION = "Clovis, US"
-            print("LOCATION is ", LOCATION, ", US")
+            print("LOCATION is ", LOCATION)
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
             # Set up where we'll be fetching data from
@@ -118,8 +118,8 @@ while True:
             print("Location is Reedley Airport")
             print("params: ", params)
         elif city_no == 5:
-            LOCATION = "Wahtoke, US"
-            print("LOCATION is ", LOCATION, ", US")
+            LOCATION = "Truckee, US"
+            print("LOCATION is ", LOCATION)
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
             # Set up where we'll be fetching data from
