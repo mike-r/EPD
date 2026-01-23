@@ -85,11 +85,10 @@ while True:
         if response.getcode() == 200:
             value = response.read()
             print("Response is", value)
-            gfx.update_time()
             gfx.display_weather(value)
             weather_refresh = time.monotonic()
             display_weather = 0
         else:
             print("Unable to retrieve data at {}".format(url))
-
-    time.sleep(0.1)  # wait 0.1 seconds before updating anything again
+        gfx.update_time()
+    time.sleep(10)  # wait 0.1 seconds before updating anything again
