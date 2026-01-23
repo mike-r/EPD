@@ -37,8 +37,8 @@ DEBOUNCE_DELAY = 0.3
 # E.g. "New York, US" or "London, GB"
 LOCATION = "Albuquerque, US"
 
-lat = 43.07942
-lon = -89.37584
+LAT = 43.07942
+LON = -89.37584
 
 DATA_SOURCE_URL = "http://api.openweathermap.org/data/2.5/weather"
 
@@ -72,8 +72,9 @@ while True:
     #print("down_button status: ", down_button.value)
     if up_button.value != down_button.value:
         if not up_button.value:
-            LOCATION = "Madison, US"
-            print("LOCATION is ", LOCATION, ", US")
+            params = {"lat": LAT, "&lon": LON, "appid": OPEN_WEATHER_TOKEN}
+            print("lat is ", LAT, ", LON is ", LON)
+            print("Location is Reedley Airport")
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
         elif not down_button.value:
