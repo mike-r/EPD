@@ -35,7 +35,7 @@ DEBOUNCE_DELAY = 0.3
 
 # Use cityname, country code where countrycode is ISO3166 format.
 # E.g. "New York, US" or "London, GB"
-LOCATION = "Clovis, US"
+LOCATION = "Albuquerque, US"
 DATA_SOURCE_URL = "http://api.openweathermap.org/data/2.5/weather"
 
 if len(OPEN_WEATHER_TOKEN) == 0:
@@ -68,7 +68,7 @@ while True:
     if up_button.value != down_button.value:
         if not up_button.value:
             print("LOCATION is Clovis, US")
-            LOCATION = "Clovis, US"
+            LOCATION = "Madison, US"
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
         elif not down_button.value:
