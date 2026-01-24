@@ -152,9 +152,9 @@ class Weather_Graphics:
         )
 
         # Draw the main text
-        (font_width, font_height) = large_font.getsize(self._main_text)
+        (font_width, font_height_main) = large_font.getsize(self._main_text)
         draw.text(
-            (5, (self.display.height - 4) - font_height * 2),
+            (5, (self.display.height - 4) - font_height_main * 2),
             self._main_text,
             font=self.large_font,
             fill=BLACK,
@@ -185,7 +185,7 @@ class Weather_Graphics:
         draw.text(
         (
                 (self.display.width - font_width - 5 - font_width_wc),
-                (self.display.height - 4) - font_height * 2,
+                (self.display.height - 4) - font_height_main * 2,
         ),
             wind_chill,
             font=self.small_font,
@@ -197,7 +197,7 @@ class Weather_Graphics:
         draw.text(
             (
                 self.display.width - font_width - 5,
-                (self.display.height - 4) - font_height * 3,
+                (self.display.height - 4) - font_height_main * 3,
             ),
             self._temperature,
             font=self.large_font,
