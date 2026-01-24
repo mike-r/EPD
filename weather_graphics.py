@@ -174,14 +174,14 @@ class Weather_Graphics:
         (font_width_2, font_height_2) = small_font.getsize(wind_chill)
         draw.text(
                 (self.display.width - font_width - 5),
-                (self.display.height - 4) - font_height * 2,
-            self._feels_like,
+                ((self.display.height - 4) - font_height * 2),
+            wind_chill,
             font=self.large_font,
             fill=BLACK,
         )
         draw.text(
                 (self.display.width - font_width - font_width_2 -5),
-                (self.display.height - 4) - (font_height * 2) - font_height_2,
+                ((self.display.height - 4) - (font_height * 2) - font_height_2),
             self._feels_like,
             font=self.small_font,
             fill=BLACK,
