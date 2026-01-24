@@ -72,7 +72,7 @@ class Weather_Graphics:
 
         city_name = weather["name"] + ", " + weather["sys"]["country"]
         print(city_name)
-        self._city_name = city_name
+        self._city_name = city_name.rstrip(", US")
 
         main = weather["weather"][0]["main"]
         print(main)
@@ -126,8 +126,13 @@ class Weather_Graphics:
         )
 
         # Draw the city
+        (font_width, font_height) = medium_font.getsize(self._city_name)
         draw.text(
-            (5, 0), self._city_name, font=self.medium_font, fill=BLACK,
+            (5, self.display.width // 2 - font_width // 2,
+            ), 
+            self._city_name, 
+            font=self.medium_font, 
+            fill=BLACK,
         )
 
         # Draw the time
