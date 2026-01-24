@@ -163,7 +163,7 @@ class Weather_Graphics:
         (font_width, font_height) = small_font.getsize(self._wind_speed)
         draw.text(
             (5, font_time_h  + font_height + 4),
-            self._time_text,
+            self._wind_speed,
             font=self.small_font,
             fill=BLACK,
         )
