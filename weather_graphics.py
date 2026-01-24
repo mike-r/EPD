@@ -111,7 +111,7 @@ class Weather_Graphics:
         self.display.fill(Adafruit_EPD.WHITE)
         image = Image.new("RGB", (self.display.width, self.display.height), color=WHITE)
         draw = ImageDraw.Draw(image)
-        wind_chill = "Wind Chill: "
+        wind_chill = "Feels: "
 
         # Draw the Icon
         (font_width, font_height) = icon_font.getsize(self._weather_icon)
