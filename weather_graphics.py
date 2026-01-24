@@ -162,7 +162,7 @@ class Weather_Graphics:
         )
 
         # Draw the feels_like temperature
-        (font_width, font_height) = large_font.getsize(self._feels_right)
+        (font_width, font_height) = large_font.getsize(self._feels_like)
         draw.text(
             (
                 self.display.width - font_width - 5,
