@@ -185,7 +185,7 @@ class Weather_Graphics:
         draw.text(
         (
                 (self.display.width - font_width - 5 - font_width_wc),
-                (self.display.height - 4) - font_height_main * 2,
+                (self.display.height - 4) - font_height_main * 3,
         ),
             wind_chill,
             font=self.small_font,
