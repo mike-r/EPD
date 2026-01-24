@@ -139,7 +139,7 @@ class Weather_Graphics:
         # Draw the time
         (font_width, font_height_time) = medium_font.getsize(self._time_text)
         draw.text(
-            (5, font_height_time * 2 - 12),
+            (5, font_height_time * 2 - 14),
             self._time_text,
             font=self.medium_font,
             fill=BLACK,
@@ -179,7 +179,7 @@ class Weather_Graphics:
         draw.text(
             (
                 (self.display.width - font_width -5),
-                (self.display.height - 4) - (font_height * 2),
+                (self.display.height - 8) - (font_height * 2),
             ),
             self._feels_like,
             font=self.small_font,
@@ -191,7 +191,7 @@ class Weather_Graphics:
         draw.text(
         (
                 (self.display.width - font_width - 5 - font_width_wc),
-                (self.display.height - 4) - (font_height * 2),
+                (self.display.height - 8) - (font_height * 2),
         ),
             wind_chill,
             font=self.small_font,
