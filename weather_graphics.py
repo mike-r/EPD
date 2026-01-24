@@ -168,7 +168,7 @@ class Weather_Graphics:
                 self.display.width - font_width - 5,
                 (self.display.height - 4) - font_height * 3,
             ),
-            self._feels_right,
+            self._feels_like,
             font=self.large_font,
             fill=BLACK,
         )
