@@ -60,7 +60,7 @@ class Weather_Graphics:
         self._main_text = None
         self._temperature = None
         self._feels_like = None
-        self._baro = None
+        self._pressure = None
         self._description = None
         self._time_text = None
 
