@@ -169,16 +169,6 @@ class Weather_Graphics:
             fill=BLACK,
         )
 
-        # Draw the feels_like temperature
- #       (font_width_2, font_height_2) = small_font.getsize(wind_chill)
- #       draw.text(
- #               (self.display.width - font_width - 5),
- #               ((self.display.height - 4) - font_height * 2),
- #           wind_chill,
- #           font=self.large_font,
- #           fill=BLACK,
- #       )
-
         (font_width, font_height) = small_font.getsize(self._feels_like)
         draw.text(
             (
@@ -186,6 +176,18 @@ class Weather_Graphics:
                 (self.display.height - 4) - (font_height * 2),
             ),
             self._feels_like,
+            font=self.small_font,
+            fill=BLACK,
+        )
+
+        # Draw the feels_like temperature
+        (font_width_wc, font_height) = small_font.getsize(wind_chill)
+        draw.text(
+        (
+                (self.display.width - font_width - 5 - font_width_wc),
+                (self.display.height - 4) - font_height * 2,
+        ),
+            wind_chill,
             font=self.small_font,
             fill=BLACK,
         )

@@ -82,6 +82,14 @@ while True:
         if city_no < 1: city_no = 5
 
         if city_no == 1:
+            LOCATION = "Albuquerque, US"
+            print("LOCATION is ", LOCATION)
+            weather_refresh = None
+            time.sleep(DEBOUNCE_DELAY)
+            # Set up where we'll be fetching data from
+            params = {"q": LOCATION, "appid": OPEN_WEATHER_TOKEN}
+            print("params: ", params)
+        elif city_no == 2:
             weather_refresh = None
             time.sleep(DEBOUNCE_DELAY)
             # Set up where we'll be fetching data from
@@ -90,14 +98,6 @@ while True:
             params = {"lat": LAT, "lon": LON, "appid": OPEN_WEATHER_TOKEN}
             print("lat is ", LAT, ", LON is ", LON)
             print("Location is Madison WI Capital Square")
-            print("params: ", params)
-        elif city_no == 2:
-            LOCATION = "Albuquerque, US"
-            print("LOCATION is ", LOCATION)
-            weather_refresh = None
-            time.sleep(DEBOUNCE_DELAY)
-            # Set up where we'll be fetching data from
-            params = {"q": LOCATION, "appid": OPEN_WEATHER_TOKEN}
             print("params: ", params)
         elif city_no == 3:
             LOCATION = "Clovis, US"
