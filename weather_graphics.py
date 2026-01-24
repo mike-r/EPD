@@ -111,6 +111,7 @@ class Weather_Graphics:
         self.display.fill(Adafruit_EPD.WHITE)
         image = Image.new("RGB", (self.display.width, self.display.height), color=WHITE)
         draw = ImageDraw.Draw(image)
+        wind_chill = "Wind Chill"
 
         # Draw the Icon
         (font_width, font_height) = icon_font.getsize(self._weather_icon)
@@ -130,11 +131,23 @@ class Weather_Graphics:
         )
 
         # Draw the time
-        (font_width, font_height) = medium_font.getsize(self._time_text)
+        (font_width, font_height_time) = medium_font.getsize(self._time_text)
         draw.text(
-            (5, font_height * 2 - 12),
+            (5, font_height_time * 2 - 12),
             self._time_text,
             font=self.medium_font,
+            fill=BLACK,
+        )
+
+        # Draw the Barometric Pressure
+        (font_width, font_height) = small_font.getsize(self._pressure)
+        draw.text(
+            (
+                self.display.width - font_width - 5,
+                self.display.height - font_height_time - 8,
+            ),
+            self._pressure,
+            font=self.small_font,
             fill=BLACK,
         )
 
@@ -150,8 +163,26 @@ class Weather_Graphics:
         # Draw the description
         (font_width, font_height) = small_font.getsize(self._description)
         draw.text(
-            (5, self.display.height - font_height - 9),
+            (1, self.display.height - font_height - 8),
             self._description,
+            font=self.small_font,
+            fill=BLACK,
+        )
+
+        # Draw the feels_like temperature
+        (font_width, font_height) = large_font.getsize(self._feels_like)
+        (font_width_2, font_height_2) = small_font.getsize(wind_chill)
+        draw.text(
+                (self.display.width - font_width - 5),
+                (self.display.height - 4) - font_height * 2,
+            self._feels_like,
+            font=self.large_font,
+            fill=BLACK,
+        )
+        draw.text(
+                (self.display.width - font_width - font_width_2 -5),
+                (self.display.height - 4) - (font_height * 2) - font_height_2,
+            self._feels_like,
             font=self.small_font,
             fill=BLACK,
         )
@@ -161,34 +192,10 @@ class Weather_Graphics:
         draw.text(
             (
                 self.display.width - font_width - 5,
-                (self.display.height - 4) - font_height * 2,
+                (self.display.height - 4) - font_height * 3,
             ),
             self._temperature,
             font=self.large_font,
-            fill=BLACK,
-        )
-
-        # Draw the feels_like temperature
-        (font_width, font_height) = large_font.getsize(self._feels_like)
-        draw.text(
-            (
-                self.display.width - font_width - 5,
-                (self.display.height - 4) - font_height * 3,
-            ),
-            self._feels_like,
-            font=self.large_font,
-            fill=BLACK,
-        )
-
-        # Draw the Barometric Pressure
-        (font_width, font_height) = small_font.getsize(self._pressure)
-        draw.text(
-            (
-                self.display.width - font_width - 5,
-                self.display.height - font_height - 9,
-            ),
-            self._pressure,
-            font=self.small_font,
             fill=BLACK,
         )
 
