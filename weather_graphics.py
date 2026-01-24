@@ -92,7 +92,7 @@ class Weather_Graphics:
         if self.celsius:
             self._pressure = pressure
         else:
-            self._pressure = f"{(pressure * 0.029529983071445):2} inHg"
+            self._pressure = f"{(pressure * 0.029529983071445):.2} inHg"
 
         description = weather["weather"][0]["description"]
         description = description[0].upper() + description[1:]
@@ -188,7 +188,7 @@ class Weather_Graphics:
                 self.display.height - font_height - 9,
             ),
             self._pressure,
-            font=self.large_font,
+            font=self.small_font,
             fill=BLACK,
         )
 
