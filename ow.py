@@ -32,7 +32,7 @@ down_button.switch_to_input()
 # 'b6907d289e10d714a6e88b30761fae22'
 OPEN_WEATHER_TOKEN = "d17d032f55bfa5607ba70c65afd9a22d"
 DEBOUNCE_DELAY = 0.3
-city_no = 1         # Reedley Airport, CA
+city_no = 1         # Madison WI Capital
 
 
 
@@ -89,7 +89,7 @@ while True:
             LON = -89.37584
             params = {"lat": LAT, "lon": LON, "appid": OPEN_WEATHER_TOKEN}
             print("lat is ", LAT, ", LON is ", LON)
-            print("Location is Reedley Airport")
+            print("Location is Madison WI Capital Square")
             print("params: ", params)
         elif city_no == 2:
             LOCATION = "Albuquerque, US"
@@ -115,7 +115,7 @@ while True:
             LON = -119.44902966047906
             params = {"lat": LAT, "lon": LON, "appid": OPEN_WEATHER_TOKEN}
             print("lat is ", LAT, ", LON is ", LON)
-            print("Location is Madison WI Capital")
+            print("Location is Reedley Airport")
             print("params: ", params)
         elif city_no == 5:
             LOCATION = "Truckee, US"

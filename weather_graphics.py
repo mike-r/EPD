@@ -144,7 +144,7 @@ class Weather_Graphics:
         draw.text(
             (
                 self.display.width - font_width - 5,
-                self.display.height - font_height_time * 2 - 12,
+                font_height_time * 2 - 12,
             ),
             self._pressure,
             font=self.small_font,
