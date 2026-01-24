@@ -104,7 +104,7 @@ class Weather_Graphics:
         wind_speed = weather["wind"]["speed"]
         wind_deg = weather["wind"]["deg"]
         
-        self._wind_speed = wind_speed
+        self._wind_speed = "%d kts" % (1.94384 * wind_speed)
         print("wind_speed: ", self._wind_speed)
 
         self._wind_deg = wind_deg
@@ -151,10 +151,20 @@ class Weather_Graphics:
 
         # Draw the time
         (font_width, font_height_time) = medium_font.getsize(self._time_text)
+        font_time_h = font_height_time * 2 - 16
         draw.text(
-            (5, font_height_time * 2 - 16),
+            (5, font_time_h),
             self._time_text,
             font=self.medium_font,
+            fill=BLACK,
+        )
+
+        # Draw wind speed and direction
+        (font_width, font_height) = small_font.getsize(self._wind_speed)
+        draw.text(
+            (5, font_time_h  + font_height + 4),
+            self._time_text,
+            font=self.small_font,
             fill=BLACK,
         )
 
