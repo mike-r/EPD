@@ -63,6 +63,8 @@ class Weather_Graphics:
         self._pressure = None
         self._description = None
         self._time_text = None
+        self._wind_speed = None
+        self._wind_deg = None
 
     def display_weather(self, weather):
         weather = json.loads(weather.decode("utf-8"))
@@ -98,6 +100,17 @@ class Weather_Graphics:
         description = description[0].upper() + description[1:]
         print(description)
         self._description = description
+
+        wind_speed = weather["wind"]["speed"]
+        wind_deg = weather["wind"]["deg"]
+        
+        self._wind_speed = wind_speed
+        print("wind_speed: ", self._wind_speed)
+
+        self._wind_deg = wind_deg
+        print("wind_deg: ", self._wind_deg)
+
+
         # "thunderstorm with heavy drizzle"
 
         self.update_time()
