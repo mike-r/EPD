@@ -104,12 +104,15 @@ class Weather_Graphics:
         wind_speed = weather["wind"]["speed"]
         wind_deg = weather["wind"]["deg"]
         
-        self._wind_speed = "%d kts" % (1.94384 * wind_speed)
+
+        if wind_speed == 0:
+            self._wind_speed = "Calm"
+            self._wind_deg = " "
+        else:
+            self._wind_speed = "%d kts" % (1.94384 * wind_speed)
+            self._wind_deg = "%d °" % wind_deg
         print("wind_speed: ", self._wind_speed)
-
-        self._wind_deg = wind_deg
         print("wind_deg: ", self._wind_deg)
-
 
         # "thunderstorm with heavy drizzle"
 
@@ -162,7 +165,7 @@ class Weather_Graphics:
         # Draw wind speed and direction
         (font_width, font_height) = small_font.getsize(self._wind_speed)
         draw.text(
-            (5, font_time_h  + font_height + 4),
+            (5, font_time_h  + font_height + 8),
             self._wind_speed,
             font=self.small_font,
             fill=BLACK,
