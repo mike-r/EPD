@@ -59,6 +59,7 @@ class Weather_Graphics:
         self._city_name = None
         self._main_text = None
         self._temperature = None
+        self._feels_like = None
         self._description = None
         self._time_text = None
 
@@ -77,11 +78,14 @@ class Weather_Graphics:
         self._main_text = main
 
         temperature = weather["main"]["temp"] - 273.15  # its...in kelvin
-        print(temperature)
+        feels_like = weather["main"]["feels_like"] - 273.15 # its also in Kelvin
+        print("temperature = ", temperature, "   feels_like = ", feels_like)
         if self.celsius:
             self._temperature = "%d °C" % temperature
+            self._feels_like = "%d °C" % feels_like
         else:
             self._temperature = "%d °F" % ((temperature * 9 / 5) + 32)
+            self._feels_like = "%d °F" % ((feels_like * 9 / 5) + 32)
 
         description = weather["weather"][0]["description"]
         description = description[0].upper() + description[1:]
@@ -153,6 +157,18 @@ class Weather_Graphics:
                 (self.display.height - 4) - font_height * 2,
             ),
             self._temperature,
+            font=self.large_font,
+            fill=BLACK,
+        )
+
+        # Draw the feels_like temperature
+        (font_width, font_height) = large_font.getsize(self._feels_right)
+        draw.text(
+            (
+                self.display.width - font_width - 5,
+                (self.display.height - 4) - font_height * 3,
+            ),
+            self._feels_right,
             font=self.large_font,
             fill=BLACK,
         )
