@@ -60,6 +60,7 @@ class Weather_Graphics:
         self._main_text = None
         self._temperature = None
         self._feels_like = None
+        self._baro = None
         self._description = None
         self._time_text = None
 
@@ -86,6 +87,12 @@ class Weather_Graphics:
         else:
             self._temperature = "%d °F" % ((temperature * 9 / 5) + 32)
             self._feels_like = "%d °F" % ((feels_like * 9 / 5) + 32)
+
+        pressure = weather["main"]["pressure"]
+        if self.celsius:
+            self._pressure = pressure
+        else:
+            self._pressure = pressure * 0.029529983071445
 
         description = weather["weather"][0]["description"]
         description = description[0].upper() + description[1:]
@@ -169,6 +176,18 @@ class Weather_Graphics:
                 (self.display.height - 4) - font_height * 3,
             ),
             self._feels_like,
+            font=self.large_font,
+            fill=BLACK,
+        )
+
+        # Draw the Barometric Pressure
+        (font_width, font_height) = small_font.getsize(self._pressure)
+        draw.text(
+            (
+                self.display.width - font_width - 5,
+                self.display.height - font_height - 9,
+            ),
+            self._pressure,
             font=self.large_font,
             fill=BLACK,
         )
