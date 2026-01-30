@@ -7,6 +7,7 @@ This example queries the Open Weather Maps site API to find out the current
 weather for your location... and display it on a eInk Bonnet!
 """
 
+import os
 import time
 import urllib.request
 import urllib.parse
@@ -30,7 +31,7 @@ down_button.switch_to_input()
 
 # You'll need to get a token from openweathermap.org, looks like:
 # 'b6907d289e10d714a6e88b30761fae22'
-OPEN_WEATHER_TOKEN = "d17d032f55bfa5607ba70c65afd9a22d"
+OPEN_WEATHER_TOKEN = os.getenv("openweather_token")
 DEBOUNCE_DELAY = 0.3
 city_no = 1         # Madison WI Capital
 
